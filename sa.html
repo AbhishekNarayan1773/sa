@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 🤩❤️‍🩹</title>
+
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+        font-family:'Comic Sans MS', cursive;
+        overflow:hidden;
+    }
+
+    .card{
+        background:white;
+        padding:40px;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h1{
+        color:#ff4d6d;
+    }
+
+    button{
+        padding:12px 25px;
+        margin:10px;
+        font-size:18px;
+        border:none;
+        border-radius:12px;
+        cursor:pointer;
+        transition:0.2s;
+    }
+
+    #yes{
+        background:#ff4d6d;
+        color:white;
+    }
+
+    #yes:hover{
+        transform:scale(1.1);
+    }
+
+    #no{
+        background:#ccc;
+        position:absolute;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Will you be my Valentine? 🥰❤️‍🩹</h1>
+    <button id="yes" onclick="yesClicked()">Yes 💖</button>
+    <button id="no">No 😢</button>
+</div>
+
+<script>
+
+const noBtn = document.getElementById("no");
+
+// Move button when cursor gets close
+document.addEventListener("mousemove", function(e){
+
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+    const rect = noBtn.getBoundingClientRect();
+
+    // distance between cursor and button
+    const dist = Math.hypot(e.clientX - rect.left, e.clientY - rect.top);
+
+    if(dist < 120){
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+});
+
+function yesClicked(){
+    document.body.innerHTML = `
+        <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        font-size:40px;
+        color:#ff4d6d;
+        font-family:cursive;
+        background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+        ">
+        YAYYY!! ❤️😍 See you on Valentine's 💕
+        </div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
